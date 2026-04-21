@@ -59,11 +59,10 @@ resource "kubernetes_manifest" "main_gateway" {
 
   computed_fields = ["spec.infrastructure"]
 
-  # This now depends on the Class existing first
   depends_on = [kubernetes_manifest.envoy_gateway_class]
 }
 
-# 5. Deploy Apps [cite: 4]
+# 5. Deploy Apps
 module "apps" {
   source   = "../../modules/k8s-app"
   for_each = var.apps
