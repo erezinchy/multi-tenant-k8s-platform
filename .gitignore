@@ -1,0 +1,28 @@
+# --- Terraform ---
+# Ignore the local provider cache and work directory
+.terraform/
+
+# Ignore local state files (Remote state is in S3)
+*.tfstate
+*.tfstate.*
+
+# Ignore lock files (unless using S3 native locking, which stays in S3)
+.terraform.lock.hcl
+
+# Ignore crash logs
+crash.log
+
+# --- Variables & Secrets ---
+# We ignore all secret files that might contain actual passwords
+*.tfvars.json
+*.secret.tfvars
+
+# For THIS challenge: We ALLOW .tfvars so the reviewer can see your app config.
+# If this were a real production repo, we would ignore all .tfvars
+# and use a Secret Manager instead.
+# !terraform.tfvars (Already handled by NOT ignoring it)
+
+# --- OS / IDE ---
+.DS_Store
+.idea/
+.vscode/
